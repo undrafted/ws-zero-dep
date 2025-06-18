@@ -29,6 +29,7 @@ export const listenToUpgradeEvent = (
       !(req.headers.upgrade?.toLocaleLowerCase() === "websocket") ||
       !(req.headers.connection?.toLowerCase() === "upgrade") ||
       (!req.method && req.method === "GET") ||
+      !req.headers["sec-websocket-key"] ||
       !isOriginAllowed(req.headers.origin)
     ) {
       console.log("==============");
